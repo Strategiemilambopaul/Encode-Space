@@ -6,9 +6,7 @@ Ceci est un outil monté pour facilité le codage ainsi que le décodage de vos 
 # Comment cela fonctionne 
 
 * Vous devez d'abord choisir une matrice au départ de type carrée:
-        
-       gauche |  centre    | droite       
----------: | :---: | :---------
+ -  Remplir chaque cellule qui constitue la matrice
 Cellule 1.1 | Cellule 1.2 | 
 ------------:| :------------:| 
 Cellule 2.1 | Cellule 2.2 | 

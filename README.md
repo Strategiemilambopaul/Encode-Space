@@ -1,4 +1,4 @@
-# ENcode Space
+# Encode Space
 **une meilleur expérience d'encodage et décodage des vos données...**
 
 Ceci est un outil monté pour facilité le codage ainsi que le décodage de vos messages avec des algorithmes définis par vos matrices.
@@ -13,7 +13,7 @@ orientation | Colonne 1 | Colonne 2
 ligne 1 | Cellule a| Cellule b 
 ligne 2 | Cellule c | Cellule d 
 
--Remplissement
+- Model de Remplissement
 
 orientation | Colonne 1 | Colonne 2 
 ---:| :-:| :---

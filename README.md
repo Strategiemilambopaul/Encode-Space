@@ -8,8 +8,9 @@ Ceci est un outil monté pour facilité le codage ainsi que le décodage de vos 
 * Vous devez d'abord choisir une matrice au départ de type carrée:
         
        gauche |  centre    | droite       
-         ---: | :---: | :--- 
+---------: | :---: | :---------
 Cellule 1.1 | Cellule 1.2 | Cellule 1.3 
+------------:| :------------:| :---------
 Cellule 2.1 | Cellule 2.2 | Cellule 2.3 
         
 **Après avoir défini votre matrice, c.à.d en remplissant les cases requisent :**

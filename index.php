@@ -81,7 +81,6 @@ if(isset($_POST) and !empty($_POST)){
     }
     if($_POST['choix']=='decoder'){
         
-
         if(isset($_POST['nom'])){
             $message1="Décodage Numérique";
             $message2="Décodage Alphabetique";

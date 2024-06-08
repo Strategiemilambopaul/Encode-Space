@@ -6,11 +6,11 @@ Ceci est un outil monté pour facilité le codage ainsi que le décodage de vos 
 # Comment cela fonctionne 
 
 * Vous devez d'abord choisir une matrice au départ de type carrée:
-        ---------
+        
         | 1 | 7 |
         --------
         | 8 | 4 |
-        ---------
+        
 **Après avoir défini votre matrice, c.à.d en remplissant les cases requisent :**
     - vous pouvez maintenant entrer un message dans le champ prevu pour le message.
 

@@ -6,12 +6,19 @@ Ceci est un outil monté pour facilité le codage ainsi que le décodage de vos 
 # Comment cela fonctionne 
 
 * Vous devez d'abord choisir une matrice au départ de type carrée:
-        
+    - Remplir la matrice en ligne et en colonne comme l'indique le croquis ci-dessous.
 
 orientation | Colonne 1 | Colonne 2 
 ------------:| :------------:| :---------
 ligne 1 | Cellule a| Cellule b 
-ligne 3 | Cellule c | Cellule d 
+ligne 2 | Cellule c | Cellule d 
+
+-Remplissement
+
+orientation | Colonne 1 | Colonne 2 
+---:| :-:| :---
+ligne 1 | 6| 4
+ligne 2 | 4| 2 
         
 **Après avoir défini votre matrice, c.à.d en remplissant les cases requisent :**
     - vous pouvez maintenant entrer un message dans le champ prevu pour le message.

@@ -33,7 +33,7 @@ ligne 2 | 4| 2
 pour la structuration, on a adopté une hierarchié assez simple. C'est-à-dire on a que deux fichiers l'un contient le traitement et
 l'autre contient une class *Cryptography* qui contient à son tour deux méthodes:
 * Encode 
-* Decode
+* Decode </br>
 le fichier est utilisé selon les normes de la POO, afin d'intéragir avec ses méthodes et attributs.
 
 # Comment maintenant décoder ce message ?

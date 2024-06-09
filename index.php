@@ -25,7 +25,8 @@ $Alphabet=[
     23 => "W",
     24 => "X",
     25 => "Y",
-    26 => "Z"
+    26 => "Z",
+    27 => "0"
 
 ];
 $TableOfCriptName=[];
@@ -36,6 +37,7 @@ $show=false;
 $message1="";
 $message2="";
 $i = 0;
+$pair = false;
 if(isset($_POST) and !empty($_POST)){
     
     if($_POST['choix']=='coder'){ 
@@ -45,7 +47,9 @@ if(isset($_POST) and !empty($_POST)){
             $longueur = strlen(htmlentities($_POST['nom']));
             
             if( $longueur % 2 == 0 ){
-            $tableauNom=preg_split('//', $_POST['nom'], -1, PREG_SPLIT_NO_EMPTY);
+                $pair=ture;
+                $text =strtoupper($_POST['nom']);
+                $tableauNom=preg_split('//', $text, -1, PREG_SPLIT_NO_EMPTY);
            
                 foreach($tableauNom as $letterOfName){
                     
@@ -58,7 +62,6 @@ if(isset($_POST) and !empty($_POST)){
                         }
                     }
                 }
-                
                 if(is_array($NameSplit)){
                     $Running = $longueur - 2;
                     for($i=0; $i <= $Running; $i=$i+2){
@@ -71,7 +74,36 @@ if(isset($_POST) and !empty($_POST)){
                     }
                 }
             }else{
-                    echo "<script>alert('entrer le mot avec paire des littres')</script>";
+                $pair = false;
+                $longueur = $longueur + 1;
+                $text =strtoupper($_POST['nom'])."0";
+                $tableauNom=preg_split('//', $text, -1, PREG_SPLIT_NO_EMPTY);
+           
+                foreach($tableauNom as $letterOfName){
+                    
+                    foreach($Alphabet as $place => $letter ){
+                        
+                        if($letterOfName == $letter){
+                            
+                            $NameSplit[] = $place;
+                            
+                        }
+                    }
+                }
+              
+                if(is_array($NameSplit)){
+                    $Running = $longueur - 2;
+                    for($i=0; $i <= $Running; $i=$i+2){
+                        
+                    $NumberPlace1 = $_POST["m1"] * $NameSplit[$i] +  $_POST["m2"] * $NameSplit[$i+1];
+                    $NumberPlace2 = $_POST["m3"] * $NameSplit[$i] +  $_POST["m4"] * $NameSplit[$i+1];
+                        $TableOfCriptName[]=$NumberPlace1;
+                        $TableOfCriptName[]=$NumberPlace2;
+                    
+                    }
+                }
+                // $TableOfCriptName=($TableOfCriptName);
+                    // echo "<script>alert('entrer le mot avec paire des littres')</script>";
             }
 
 
@@ -91,12 +123,34 @@ if(isset($_POST) and !empty($_POST)){
                 $m2= -($_POST['m2']*$InverseDet);
                 $m3= -($_POST['m3']*$InverseDet);
                 $m4= $_POST['m1']*$InverseDet;
+               
 
             $longueur = count(explode(' ',$_POST['nom']));
-            $tableauNom= explode(' ',$_POST['nom']);
-            
+            if($longueur % 2 == 0){ 
+               $pair= true;
+                $tableauNom= explode(' ',$_POST['nom']);
+                
+                    if($tableauNom){
+                        $Running = $longueur - 2;
+                      
+                        for($i=0; $i <= $Running; $i=$i+2){
+                          
+                        $NumberPlace1 = $m1 * (int)$tableauNom[$i] +  $m2 * (int)$tableauNom[$i+1];
+                        $NumberPlace2 = $m3 * (int)$tableauNom[$i] +  $m4 * (int)$tableauNom[$i+1];
+                            $TableOfCriptName[]=$NumberPlace1;
+                            $TableOfCriptName[]=$NumberPlace2;
+                            
+                    }
+                    
+                }
+            }else{
+                $pair = false;
+                $nom = $_POST['nom']." 0";
+                $tableauNom= explode(' ',$nom);
+                
                 if($tableauNom){
-                    $Running = $longueur - 2;
+                    
+                    $Running = $longueur - 1;
                     for($i=0; $i <= $Running; $i=$i+2){
                         
                     $NumberPlace1 = $m1 * $tableauNom[$i] +  $m2 * $tableauNom[$i+1];
@@ -104,16 +158,17 @@ if(isset($_POST) and !empty($_POST)){
                         $TableOfCriptName[]=$NumberPlace1;
                         $TableOfCriptName[]=$NumberPlace2;
                         
-                    }
-                   
                 }
+                
+            }
+            }
         }
 
     }
 }
 
-if(isset($longueur) and is_array($TableOfCriptName)){ 
-    setcookie("matrice","true",time()+5);
+if(isset($longueur) and is_array($TableOfCriptName) and $pair=true){ 
+  
     for($i=0; $i <= $longueur -1 ; $i++){              
         foreach($Alphabet as $place => $letter ){                       
             if(isset($TableOfCriptName[$i]) and $TableOfCriptName[$i] == $place){
@@ -127,7 +182,31 @@ if(isset($longueur) and is_array($TableOfCriptName)){
         $verify=false;
     }
     $show=true;
+    $longueur = $longueur-1;
 }
+if(isset($longueur) and is_array($TableOfCriptName) and $pair=false){ 
+  
+    for($i=0; $i <= $longueur -2 ; $i++){   
+                   
+        foreach($Alphabet as $place => $letter ){   
+                            
+            if(isset($TableOfCriptName[$i]) and $TableOfCriptName[$i] == $place){
+                $verify = true; 
+                
+                $codeMessage[] = $letter;  
+                      
+            }    
+        }
+        if($verify==false){
+            
+            $codeMessage[] = "⛔";        
+        }
+        $verify=false;
+    }
+    $show=true;
+    $longueur = $longueur -2;
+}
+
 ?>
 
 
@@ -141,17 +220,17 @@ if(isset($longueur) and is_array($TableOfCriptName)){
 </head>
 <body>
 <h2 class="bg-info w-20 text-center">Bienvenu sur EncodeSpace 🎃</h2> 
-<?php if(isset($show) and $show==true and isset($_COOKIE['matrice'])):?>
+<?php if(isset($show) and $show==true):?>
  <div class="text-center" id="message">   
-        <div class="alert alert-info">
-            <?=$message1?>: 
+        <div class="btn btn-secondary mb-2">
+            <span class="badge rounded-pill bg-success"><?=$message1?>: </span>
             <h6>
-            <?php foreach($TableOfCriptName as $codeMessageNumber):?>
-                <?= $codeMessageNumber." "?>
-            <?php endforeach ?>
+            <?php for($i=0; $i <= $longueur ; $i++):?>
+                <?=$TableOfCriptName[$i]." "?>
+            <?php endfor ?>
             </h6> 
             
-            <?= $message2?>:
+            <span class="badge rounded-pill bg-info"><?= $message2?>:</span>
             <h6>
                 <?= implode(' ' ,$codeMessage)?>
             </h6>

@@ -28,6 +28,14 @@ ligne 2 | 4| 2
     - Decodage
 * Si toutes les étapes ont été respecté , votre message sera Encodé avec la matrice défini au départ.*
 
+# Comment est structuré les fichiers
+
+pour la structuration, on a adopté une hierarchié assez simple. C'est-à-dire on a que deux fichiers l'un contient le traitement et
+l'autre contient une class *Cryptographie* qui contient à son tour deux méthodes:
+ - Encode 
+ - Decode
+le fichier est utilisé selon les normes de la POO, afin d'intéragir avec ses méthodes et attributs.
+
 # Comment maintenant décoder ce message ?
 * le décodage ne possible qu'à la connaissance dela **_matrice_** avec laquelle le message a été coder. 
 Elle est donc la clet qui nous traduit le message caché.

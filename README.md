@@ -31,9 +31,9 @@ ligne 2 | 4| 2
 # Comment est structuré les fichiers
 
 pour la structuration, on a adopté une hierarchié assez simple. C'est-à-dire on a que deux fichiers l'un contient le traitement et
-l'autre contient une class *Cryptographie* qui contient à son tour deux méthodes:
- - Encode 
- - Decode
+l'autre contient une class *Cryptography* qui contient à son tour deux méthodes:
+* Encode 
+* Decode
 le fichier est utilisé selon les normes de la POO, afin d'intéragir avec ses méthodes et attributs.
 
 # Comment maintenant décoder ce message ?
